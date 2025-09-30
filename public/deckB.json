@@ -1,0 +1,23 @@
+[
+  {
+    "id": "b-profa-maria",
+    "teacher": "Profa. Maria",
+    "nickname": "A Exigente",
+    "image": "/images/vite.svg",
+    "attributes": { "didatica": 80, "carisma": 70, "rigor": 95, "prazos": 90, "humor": 65 }
+  },
+  {
+    "id": "b-prof-paulo",
+    "teacher": "Prof. Paulo",
+    "nickname": "O Bem-Humorado",
+    "image": "/images/prof-paulo.jpeg",
+    "attributes": { "didatica": 78, "carisma": 88, "rigor": 70, "prazos": 75, "humor": 95 }
+  },
+  {
+    "id": "b-profa-renata",
+    "teacher": "Profa. Renata",
+    "nickname": "A Estrategista",
+    "image": "/images/profa-renata.jpeg",
+    "attributes": { "didatica": 85, "carisma": 82, "rigor": 88, "prazos": 80, "humor": 72 }
+  }
+]
