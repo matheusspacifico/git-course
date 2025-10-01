@@ -1,5 +1,5 @@
 // External Library
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 // Components
 import Header from "@components/structure/Header";
@@ -8,52 +8,22 @@ import CardsGrid from "@components/commons/cards/CardGrid";
 import MiniCard from "@components/structure/MiniCard";
 import ArenaView from "@components/structure/AreaView";
 
+// Static Data Content
+import { deckContent } from "@assets/content/deck";
+import { areaContent } from "@assets/content/arena";
+import { winnerContent } from "@assets/content/winner";
+
 // Types
-import type { ArenaState, Attrs, Card, Winner } from "./types/arena";
+import type { Attrs, Card } from "_types/arena";
 
 export default function App() {
-  const [deckA, setDeckA] = useState<Card[] | null>(null);
-  const [deckB, setDeckB] = useState<Card[] | null>(null);
-  const [arena, setArena] = useState<ArenaState | null>(null);
-  const [winners, setWinners] = useState<Winner[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const deckA = deckContent.firstPlayer;
+  const deckB = deckContent.secondPlayer;
+  const arena = areaContent[0] || null;
+  const winners = winnerContent;
 
-  // Carrega todos os JSONs necessários
-  useEffect(() => {
-    const safeLoad = async <T,>(path: string, fallback: T): Promise<T> => {
-      try {
-        const r = await fetch(path, { cache: "no-store" });
-        if (!r.ok) return fallback;
-        const txt = await r.text();
-        if (!txt || txt.trim() === "") return fallback;
-        return JSON.parse(txt) as T;
-      } catch {
-        return fallback;
-      }
-    };
-
-    (async () => {
-      try {
-        const [a, b, ar, w] = await Promise.all([
-          safeLoad<Card[]>("/deckA.json", []),
-          safeLoad<Card[]>("/deckB.json", []),
-          safeLoad<ArenaState | null>("/arena.json", null),
-          safeLoad<Winner[]>("/winners.json", []),
-        ]);
-        setDeckA(a);
-        setDeckB(b);
-        setArena(ar);
-        setWinners(w);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : String(e));
-      }
-    })();
-  }, []);
-
-  // Busca cartas escolhidas na arena
   const arenaCards = useMemo(() => {
-    if (!deckA || !deckB || !arena)
-      return { a: null as Card | null, b: null as Card | null };
+    if (!arena) return { a: null as Card | null, b: null as Card | null };
     const a = deckA.find((c) => c.id === arena.deckA) ?? null;
     const b = deckB.find((c) => c.id === arena.deckB) ?? null;
     return { a, b };
@@ -86,11 +56,10 @@ export default function App() {
     } as const;
   }, [arena, arenaCards]);
 
-  // Mapa (id -> Card) para lookup rápido ao renderizar winners
   const cardIndex = useMemo(() => {
     const idx = new Map<string, Card>();
-    (deckA || []).forEach((c) => idx.set(c.id, c));
-    (deckB || []).forEach((c) => idx.set(c.id, c));
+    deckA.forEach((c) => idx.set(c.id, c));
+    deckB.forEach((c) => idx.set(c.id, c));
     return idx;
   }, [deckA, deckB]);
 
@@ -98,15 +67,6 @@ export default function App() {
     <div className="min-h-screen w-full bg-neutral-50 text-neutral-900">
       <Header />
 
-      <section className="w-full px-4 pt-6">
-        {error && (
-          <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 p-4 text-amber-900">
-            <strong>Nota:</strong> {error}
-          </div>
-        )}
-      </section>
-
-      {/* Arena atual */}
       <section className="w-full px-4 mt-4">
         <h2 className="text-xl font-semibold mb-3">
           🆚 Arena X1 — Deck A vs Deck B
@@ -137,7 +97,6 @@ export default function App() {
         )}
       </section>
 
-      {/* Decks */}
       <section className="w-full px-4 mt-10">
         <h3 className="text-lg font-semibold">🗂️ Deck A</h3>
         <CardsGrid cards={deckA} emptyHint="Adicione cartas em /deckA.json" />
@@ -148,7 +107,6 @@ export default function App() {
         <CardsGrid cards={deckB} emptyHint="Adicione cartas em /deckB.json" />
       </section>
 
-      {/* Histórico de vencedores */}
       <section className="w-full px-4 mt-10 pb-16">
         <h2 className="text-xl font-semibold mb-3">🏆 Histórico de Batalhas</h2>
         {!winners || winners.length === 0 ? (
