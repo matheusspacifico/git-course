@@ -1,0 +1,17 @@
+// Types
+import type { Winner } from "../../types";
+
+export const winnerContent: Winner[] = [
+  {
+    round: "2025-09-30-1",
+    winner: "b-profa-renata",
+    loser: "a-prof-ricardo",
+    attribute: "carisma",
+    diff: 12,
+    playerAName: "Ana",
+    playerBName: "Bruno",
+    winnerName: "Bruno",
+  },
+];
+
+export default winnerContent;
