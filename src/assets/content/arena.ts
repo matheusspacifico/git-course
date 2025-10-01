@@ -1,5 +1,5 @@
 // Types
-import type { ArenaState } from "../../types";
+import type { ArenaState } from "_types/arena";
 
 export const areaContent: ArenaState[] = [
   {

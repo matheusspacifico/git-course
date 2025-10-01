@@ -1,5 +1,5 @@
 // Types
-import type { Winner } from "../../types";
+import type { Winner } from "_types/arena";
 
 export const winnerContent: Winner[] = [
   {

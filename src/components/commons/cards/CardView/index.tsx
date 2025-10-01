@@ -2,7 +2,7 @@
 import StatBar from "../../StatusBar";
 
 // Types
-import type { Attrs, Card } from "../../../../types";
+import type { Attrs, Card } from "_types/arena";
 
 type CardViewProps = {
   item: Card;

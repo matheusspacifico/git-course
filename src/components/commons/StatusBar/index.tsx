@@ -1,5 +1,5 @@
 // Types
-import type { Attrs } from "../../../types";
+import type { Attrs } from "_types/arena";
 
 type StatBarProp = {
   label: keyof Attrs;

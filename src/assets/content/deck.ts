@@ -7,7 +7,7 @@ import profPaulo from "../images/prof-paulo.jpeg";
 import profRenata from "../images/profa-renata.jpeg";
 
 // Types
-import type { Card } from "../../types";
+import type { Card } from "_types/arena";
 
 type Deck = {
   firstPlayer: Card[];

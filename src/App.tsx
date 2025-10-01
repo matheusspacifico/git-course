@@ -2,14 +2,14 @@
 import { useEffect, useMemo, useState } from "react";
 
 // Components
-import Header from "./components/structure/Header";
-import Footer from "./components/structure/Footer";
-import CardsGrid from "./components/commons/cards/CardGrid";
-import MiniCard from "./components/structure/MiniCard";
-import ArenaView from "./components/structure/AreaView";
+import Header from "@components/structure/Header";
+import Footer from "@components/structure/Footer";
+import CardsGrid from "@components/commons/cards/CardGrid";
+import MiniCard from "@components/structure/MiniCard";
+import ArenaView from "@components/structure/AreaView";
 
 // Types
-import type { ArenaState, Attrs, Card, Winner } from "./types";
+import type { ArenaState, Attrs, Card, Winner } from "./types/arena";
 
 export default function App() {
   const [deckA, setDeckA] = useState<Card[] | null>(null);

@@ -1,5 +1,5 @@
 // Types
-import type { Attrs, Card } from "../../../types";
+import type { Attrs, Card } from "_types/arena";
 
 type MiniCardProps = {
   card: Card | null;

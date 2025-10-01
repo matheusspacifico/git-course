@@ -2,7 +2,7 @@
 import CardView from "../CardView";
 
 // Types
-import type { Card } from "../../../../types";
+import type { Card } from "_types/arena";
 
 type CardGridProps = {
   cards: Card[] | null;

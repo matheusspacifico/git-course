@@ -10,7 +10,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
-      "@types/*": ["types/*"],
+      "_types/*": ["types/*"],
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"],
     },

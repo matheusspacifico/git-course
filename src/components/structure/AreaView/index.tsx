@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import MiniCard from "../MiniCard";
 
 // Types
-import type { Attrs, Card } from "../../../types";
+import type { Attrs, Card } from "_types/arena";
 
 type ArenaViewProps = {
   left: Card | null;
