@@ -1,11 +1,11 @@
 #!/bin/bash
 
-yarn build
+npm run build
 
 if [ $? -eq 0 ]; then
-  echo "Success. Starting development server."
-  yarn dev
+  echo "Build concluído com sucesso. Iniciando servidor de desenvolvimento."
+  npm run dev
 else
-  echo "Error. Build failed."
+  echo "Erro: O build falhou."
   exit 1
 fi
