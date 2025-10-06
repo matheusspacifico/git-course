@@ -4,10 +4,10 @@ import type { ArenaState } from "_types/arena";
 export const areaContent: ArenaState[] = [
   {
     round: "2025-10-01-1",
-    attribute: "carisma",
+    attribute: "prazos",
     deckA: "a-prof-ricardo",
     deckB: "b-profa-renata",
-    playerAName: "Ana",
+    playerAName: "Tralalelo Tralala",
     playerBName: "Bruno",
   },
 ];
